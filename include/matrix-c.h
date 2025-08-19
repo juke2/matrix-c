@@ -8,59 +8,89 @@
 #define __STDC_VERSION__ 
 // temporary!!! ///////////////////////////////////////////
 
-#ifndef  __STDC_VERSION__ 
-    // this means we're running a C version < C99, which is where complex.h was implemented.
-    // thus we shouldn't include complex functions
-    #define MATRIX_C_NO_COMPLEX
-#endif
-
 #include <stdlib.h>
-#ifndef MATRIX_C_NO_COMPLEX
+#if !(_GLIBCXX_HAVE_COMPLEX_H)
 #include <complex.h>
 #endif
 
-#ifndef _Imaginary_I
-    #define MATRIX_C_NO_COMPLEX
-#endif
-
-enum ERROR_CODES{
-    MATRIX_C_NOT_IMPLEMENTED = -1,
-    MATRIX_C_PROCESS_COMPLETED = 0,
-};
 
 // AXPY -- update vector
-int saxpy(size_t n, float alpha, float* x, int incx, float* y, int incy);
-int daxpy(size_t n, double alpha, double* x, int incx, double* y, int incy);
-#ifndef MATRIX_C_NO_COMPLEX
-int caxpy(size_t n, float _Complex alpha, float _Complex* x, int incx, float _Complex* y, int incy);
-int zaxpy(size_t n, double _Complex alpha, double _Complex* x, int incx, double _Complex* y, int incy);
+float* saxpy(size_t n, float alpha, float* x, int incx, float* y, int incy);
+double* daxpy(size_t n, double alpha, double* x, int incx, double* y, int incy);
+#if (_GLIBCXX_HAVE_COMPLEX_H)
+float _Complex* caxpy(size_t n, float _Complex alpha, float _Complex* x, int incx, float _Complex* y, int incy);
+double _Complex* zaxpy(size_t n, double _Complex alpha, double _Complex* x, int incx, double _Complex* y, int incy);
 #endif
 
 // SCAL -- scale vector
-int sscal(size_t n, float alpha, float* x, int incx);
-int dscal(size_t n, double alpha, double* x, int incx);
-#ifndef MATRIX_C_NO_COMPLEX
-int cscal(size_t n, float _Complex alpha, float _Complex* x, int incx);
-int zscal(size_t n, double _Complex alpha, double _Complex* x, int incx);
+float* sscal(size_t n, float alpha, float* x, int incx);
+double* dscal(size_t n, double alpha, double* x, int incx);
+#if (_GLIBCXX_HAVE_COMPLEX_H)
+float _Complex* cscal(size_t n, float _Complex alpha, float _Complex* x, int incx);
+double _Complex* zscal(size_t n, double _Complex alpha, double _Complex* x, int incx);
 #endif
+// TODO: figure out what these functions are
 // csscal?
 // zdscal?
 
 // COPY -- copy vector
 int scopy(size_t n, float* x, int incx, float* y, int incy);
 int dcopy(size_t n, double* x, int incx, double* y, int incy);
-#ifndef MATRIX_C_NO_COMPLEX
+#if (_GLIBCXX_HAVE_COMPLEX_H)
 int ccopy(size_t n, float _Complex* x, int incx, float _Complex* y, int incy);
 int zcopy(size_t n, double _Complex* x, int incx, double _Complex* y, int incy);
 #endif
 
 // SWAP -- swap vectors
-int sswap(size_t n, float* x, int incx, float* y, int incy);
-int dswap(size_t n, double* x, int incx, double* y, int incy);
-#ifndef MATRIX_C_NO_COMPLEX
-int cswap(size_t n, float _Complex* x, int incx, float _Complex* y, int incy);
-int zswap(size_t n, double _Complex* x, int incx, double _Complex* y, int incy);
+void sswap(size_t n, float* x, int incx, float* y, int incy);
+void dswap(size_t n, double* x, int incx, double* y, int incy);
+#if (_GLIBCXX_HAVE_COMPLEX_H)
+void cswap(size_t n, float _Complex* x, int incx, float _Complex* y, int incy);
+void zswap(size_t n, double _Complex* x, int incx, double _Complex* y, int incy);
 #endif
+
+// DOT -- dot product
+float sdot(size_t n, float* x, int incx, float* y, int incy);
+double ddot(size_t n, double* x, int incx, double* y, int incy);
+
+#if (_GLIBCXX_HAVE_COMPLEX_H)
+// COMPLEX DOT
+float _Complex cdotu(size_t n, float _Complex* x, int incx, float _Complex* y, int incy);
+double _Complex zdotu(size_t n, double _Complex* x, int incx, double _Complex* y, int incy);
+
+// COMPLEX DOT (CONJUGATE)
+float _Complex cdotc(size_t n, float _Complex* x, int incx, float _Complex* y, int incy);
+double _Complex zdotc(size_t n, double _Complex* x, int incx, double _Complex* y, int incy);
+#endif
+
+// unsure what sdsdot and dsdot are (internally double precision...?)
+// TODO: figure this out
+
+// NRM2 -- 2-norm
+float snrm2(size_t n, float* x, int incx);
+double dnrm2(size_t n, double* x, int incx);
+#if (_GLIBCXX_HAVE_COMPLEX_H)
+float _Complex scnrm2(size_t n, float _Complex* x, int incx);
+double _Complex dznrm2(size_t n, double _Complex* x, int incx);
+#endif
+
+// ASUM -- 1-norm
+float sasum(size_t n, float* x, int incx);
+double dasum(size_t n, double* x, int incx);
+#if (_GLIBCXX_HAVE_COMPLEX_H)
+float _Complex scasum(size_t n, float _Complex* x, int incx);
+double _Complex dzasum(size_t n, double _Complex* x, int incx);
+#endif
+
+// I_AMAX -- \infty-norm
+float si_amax(size_t n, float _Complex* x, int incx);
+double di_amax(size_t n, float _Complex* x, int incx);
+#if (_GLIBCXX_HAVE_COMPLEX_H)
+float _Complex ci_amax(size_t n, float _Complex* x, int incx);
+double _Complex zi_amax(size_t n, double _Complex* x, int incx);
+#endif
+
+
 
 
 

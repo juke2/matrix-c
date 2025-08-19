@@ -2,6 +2,8 @@
     "C_Cpp.default.compilerPath": "/nix/store/888bkaqdpfpx72dd8bdc69qsqlgbhcvf-gcc-wrapper-13.3.0/bin/g++",
     "files.associations": {
         "math.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "ccomplex": "cpp",
+        "complex": "cpp"
     }
 }

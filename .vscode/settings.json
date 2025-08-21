@@ -4,6 +4,7 @@
         "math.h": "c",
         "stdio.h": "c",
         "ccomplex": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "time.h": "c"
     }
 }

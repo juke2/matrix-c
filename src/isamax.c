@@ -1,5 +1,6 @@
 #include <float.h>
-int ISAMAX(int N, float* X, int INCX){
+#include <stdlib.h>
+int isamax(size_t N, float* X, int INCX){
     int d = 0, ix = 0;
     int ix_max = 0;
     float max = __FLT_MIN__;

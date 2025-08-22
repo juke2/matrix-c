@@ -93,22 +93,22 @@ double _Complex izamax(size_t N, double _Complex* X, int INCX);
 #endif
 
 // ROTG - generate plane (Given’s) rotation (c real, s complex) 
-srotg(float A, float B, float* C, float* S);
-drotg(double A, double B, double* C, double* S);
+void srotg(float A, float B, float* C, float* S);
+void drotg(double A, double B, double* C, double* S);
 #if (_GLIBCXX_HAVE_COMPLEX_H)
-crotg(float _Complex A, float _Complex B, float _Complex* C, float _Complex* S);
-zrotg(double _Complex A, double _Complex B, double _Complex* C, double _Complex* S);
+void crotg(float _Complex A, float _Complex B, float C, float _Complex* S);
+void zrotg(double _Complex A, double _Complex B, double C, double _Complex* S);
 #endif
 
 // ROT - apply plane rotation (c real, s complex)
-srot(int N, float* X, int INCX, float* Y, int INCY, float C, float S);
-// drot
+void srot(size_t N, float* X, int INCX, float* Y, int INCY, float C, float  S);
+void drot(size_t N, double* X, int INCX, double* Y, int INCY, double C, double  S)
 #if (_GLIBCXX_HAVE_COMPLEX_H)
-// crot
-// zrot
+void crot(size_t N, float _Complex* X, int INCX, float _Complex* Y, int INCY, float C, float _Complex S);
+void zrot(size_t N, double _Complex* X, int INCX, double _Complex* Y, int INCY, double C, double _Complex S);
 // (c complex, s complex)
-// csrot
-// zdrot
+void csrot(size_t N, float _Complex* X, int INCX, float _Complex* Y, int INCY, float _Complex C, float _Complex S)
+void zdrot(size_t N, double _Complex* X, int INCX, double _Complex* Y, int INCY, double _Complex C, double _Complex S)
 #endif
 
 // ROTMG - generate modified plane rotation

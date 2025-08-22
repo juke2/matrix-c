@@ -1,5 +1,5 @@
 #include <stdlib.h>
-float* saxpy(size_t N, float ALPHA, float* X, int INCX, float* Y, int INCY){
+double* daxpy(size_t N, double ALPHA, double* X, int INCX, double* Y, int INCY){
     // y = a*x + y
     int d = 0,ix = 0,iy = 0;
     for(d = 0; d < N; d++){

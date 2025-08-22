@@ -1,5 +1,6 @@
 #include <math.h>
-int SASUM(int N, float* X, int INCX){
+#include <stdlib.h>
+int sasum(size_t N, float* X, int INCX){
     int d = 0, ix = 0;
     float abs_value;
     for(d = 0; d < N; d++){

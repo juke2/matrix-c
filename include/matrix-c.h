@@ -96,8 +96,8 @@ double _Complex izamax(size_t N, double _Complex* X, int INCX);
 void srotg(float A, float B, float* C, float* S);
 void drotg(double A, double B, double* C, double* S);
 #if !(_GLIBCXX_HAVE_COMPLEX_H)
-void crotg(float _Complex A, float _Complex B, float C, float _Complex* S);
-void zrotg(double _Complex A, double _Complex B, double C, double _Complex* S);
+void crotg(float _Complex A, float _Complex B, float* C, float _Complex* S);
+void zrotg(double _Complex A, double _Complex B, double* C, double _Complex* S);
 #endif
 
 // ROT - apply plane rotation (c real, s complex)

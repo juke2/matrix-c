@@ -6,6 +6,8 @@
         "ccomplex": "cpp",
         "complex": "cpp",
         "time.h": "c",
-        "zaxpy": "cpp"
+        "zaxpy": "cpp",
+        "errno.h": "c",
+        "stdlib.h": "c"
     }
 }

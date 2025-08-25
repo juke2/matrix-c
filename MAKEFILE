@@ -1,0 +1,28 @@
+float_objects = 
+double_objects =
+complex_objects = 
+double_complex_objects = 
+other_objects = 
+objects = $(float_objects) $(double_objects) $(complex_objects) $(double_complex_objects) $(other_objects)
+
+
+all: $(objects) 
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BIN_DIR)draw_opengl.out $(addprefix $(BUILD_DIR),$(objects)) $(BUILD_DIR)main-draw.o
+	$(CC) -lm -o $(BIN_DIR)n-body-simulate.out $(BUILD_DIR)nbody.o $(BUILD_DIR)main-n-body.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BIN_DIR)$(output) $(addprefix $(BUILD_DIR),$(objects)) $(BUILD_DIR)nbody.o $(BUILD_DIR)main.o
+
+nbody_draw.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)nbody_draw.o -c ./src/draw_simulation_opengl.c
+
+nbody.o:
+	$(CC) -lm -o $(BUILD_DIR)nbody.o -c ./src/n_body_renderer.c
+
+main.o: nbody_draw.o nbody.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)main.o -c ./src/main.c
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)main-n-body.o -c ./src/main-n-body.c
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)main-draw.o -c ./src/main-draw.c
+
+
+clean:
+	rm -f $(BIN_DIR)*
+	rm -f $(BUILD_DIR)*

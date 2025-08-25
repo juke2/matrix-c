@@ -122,18 +122,64 @@ void drotm(size_t N, double* X, int INCX, double* Y, int INCY, double* PARAM);
 // MATRIX-VECTOR OPERATIONS
 
 // GEMV - general matrix-vector multiply
-// float* sgemv()
-// double* dgemv()
+float* sgemv(char TRANS, size_t M, size_t N, float ALPHA, float* A, size_t ldA, float* X, int INCX, float BETA, float* Y, int INCY);
+double* dgemv(char TRANS, size_t M, size_t N, double ALPHA, double* A, size_t ldA, double* X, int INCX, double BETA, double* Y, int INCY);
 #if !(_GLIBCXX_HAVE_COMPLEX_H)
-// float _Complex* cgemv()
-// double _Complex* zgemv()
+float _Complex* cgemv(char TRANS, size_t M, size_t N, float _Complex ALPHA, float _Complex* A, size_t ldA, float _Complex* X, int INCX, float _Complex BETA, float _Complex* Y, int INCY);
+double _Complex* zgemv(char TRANS, size_t M, size_t N, double _Complex ALPHA, double _Complex* A, size_t ldA, double _Complex* X, int INCX, double _Complex BETA, double _Complex* Y, int INCY);
 #endif
 
 // HEMV - Hermetian matrix-vector mul
 #if !(_GLIBCXX_HAVE_COMPLEX_H) 
-// float _Complex* chemv()
-// double _Complex* zhemv()
+float _Complex* chemv(char uplo, size_t N, float _Complex ALPHA, float _Complex* A, size_t ldA, float _Complex* X, int INCX, float _Complex BETA, float _Complex* Y, int INCY);
+double _Complex* zhemv(char uplo, size_t N, double _Complex ALPHA, double _Complex* A, size_t ldA, double _Complex* X, int INCX, double _Complex BETA, double _Complex* Y, int INCY);
 #endif
+
+// SYMV - Symmetric matrix-vector mul
+float* ssymv(char uplo, size_t N, float ALPHA, float* A, size_t ldA, float* X, int INCX, float BETA, float* Y, int INCY);
+double* dsymv(char uplo, size_t N, double ALPHA, double* A, size_t ldA, double* X, int INCX, double BETA, double* Y, int INCY);
+
+// TRMV - Triangular matrix-vector mul
+float* strmv(char uplo, char trans, char diag, size_t N, float* A, size_t ldA, float* X, int incx );
+double* dtrmv(char uplo, char trans, char diag, size_t N, double* A, size_t ldA, double* X, int incx );
+float _Complex* ctrmv(char uplo, char trans, char diag, size_t N, float _Complex* A, size_t ldA, float _Complex* X, int incx );
+double _Complex* ztrmv(char uplo, char trans, char diag, size_t N, double _Complex* A, size_t ldA, double _Complex* X, int incx );
+
+// TRSV - Triangular solve
+float* strsv(char uplo, char trans, char diag, size_t N, float* A, size_t ldA, float* X, int incx );
+double* dtrsv(char uplo, char trans, char diag, size_t N, double* A, size_t ldA, double* X, int incx );
+float _Complex* ctrsv(char uplo, char trans, char diag, size_t N, float _Complex* A, size_t ldA, float _Complex* X, int incx );
+double _Complex* ztrsv(char uplo, char trans, char diag, size_t N, double _Complex* A, size_t ldA, double _Complex* X, int incx );
+
+// GER - general rank-1 update 
+float* sger(size_t M, size_t N, float ALPHA, float* X, int INCX, float* Y, int INCY, float* A, size_t ldA);
+double* dger(size_t M, size_t N, double ALPHA, double* X, int INCX, double* Y, int INCY, double* A, size_t ldA);
+
+// GERU - general rank-1 update (complex)
+float _Complex* cgeru(size_t M, size_t N, float _Complex ALPHA, float _Complex* X, int INCX, float _Complex* Y, int INCY, float _Complex* A, size_t ldA);
+double _Complex* zgeru(size_t M, size_t N, double _Complex ALPHA, double _Complex* X, int INCX, double _Complex* Y, int INCY, double _Complex* A, size_t ldA);
+
+// GERC - general rank-1 update (complex conj)
+float _Complex* cgerc(size_t M, size_t N, float _Complex ALPHA, float _Complex* X, int INCX, float _Complex* Y, int INCY, float _Complex* A, size_t ldA);
+double _Complex* zgerc(size_t M, size_t N, double _Complex ALPHA, double _Complex* X, int INCX, double _Complex* Y, int INCY, double _Complex* A, size_t ldA);
+
+// SYR - symmetric rank-1 update
+// float* ssyr()
+// double* dsyr()
+
+// HER - Hermitian rank-1 update
+// float* cher()
+// double* zher()
+
+// SYR2 - symmetric rank-2 update
+// float* ssyr2()
+// double* dsyr2()
+
+// HER2- Hermitian rank-2 update 
+// float _Complex* cher2()
+// double _Complex* zher2()
+
+
 
 
 // BAND STORAGE

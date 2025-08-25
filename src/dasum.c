@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <errno.h>
-double idamax(size_t N, double* X, int INCX){
+double dasum(size_t N, double* X, int INCX){
     errno = ENOSYS;
     return 0.0;
 }

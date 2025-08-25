@@ -1,13 +1,13 @@
 float_objects = saxpy.o sscal.o scopy.o sswap.o sdot.o snrm2.o sasum.o isamax.o srotg.o srot.o 
 double_objects = daxpy.o dscal.o dcopy.o dswap.o ddot.o dnrm2.o dasum.o idamax.o drotg.o drot.o 
-complex_objects = caxpy.o cscal.o ccopy.o cswap.o cdotu.o cdotc.o scasum.o icamax.o crotg.o crot.o csrot.o
-double_complex_objects = zaxpy.o zscal.o zcopy.o zswap.o zdotu.o dznrm2.o dzasum.o izamax.o zrotg.o zrot.o zdrot.o
+complex_objects = caxpy.o cscal.o ccopy.o cswap.o cdotu.o cdotc.o scnrm2.o scasum.o icamax.o crotg.o crot.o csrot.o
+double_complex_objects = zaxpy.o zscal.o zcopy.o zswap.o zdotu.o zdotc.o dznrm2.o dzasum.o izamax.o zrotg.o zrot.o zdrot.o
 other_objects = 
 objects = $(float_objects) $(double_objects) $(complex_objects) $(double_complex_objects) $(other_objects)
 
 
 all: $(objects) 
-	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -shared -o $(BIN_DIR)matrix-c.so $(addprefix $(BUILD_DIR),$(objects))
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -shared -o $(BIN_DIR)libmatrix-c.so $(addprefix $(BUILD_DIR),$(objects))
 
 saxpy.o: 
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)saxpy.o -c $(SRC_DIR)saxpy.c
@@ -75,6 +75,18 @@ cdotc.o:
 zdotc.o:
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)zdotc.o -c $(SRC_DIR)zdotc.c
 
+snrm2.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)snrm2.o -c $(SRC_DIR)snrm2.c
+
+dnrm2.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)dnrm2.o -c $(SRC_DIR)dnrm2.c
+
+scnrm2.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)scnrm2.o -c $(SRC_DIR)scnrm2.c
+
+dznrm2.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)dznrm2.o -c $(SRC_DIR)dznrm2.c
+
 sasum.o: 
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)sasum.o -c $(SRC_DIR)sasum.c
 
@@ -128,6 +140,9 @@ csrot.o:
 
 zdrot.o:
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)zdrot.o -c $(SRC_DIR)zdrot.c
+
+test: all
+	$(CC) $(CFLAGS) $(TEST_LD_FLAGS) $(TEST_LD_LIBS) $(LD_LIBS) -o $(BIN_DIR)check_implemented.out ./test/check_implemented.c
 
 
 clean:

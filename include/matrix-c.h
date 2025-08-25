@@ -4,10 +4,6 @@
 
 #define MATRIX_C_JUKE_H
 
-// temporary!!! ///////////////////////////////////////////
-#define __STDC_VERSION__ 
-// temporary!!! ///////////////////////////////////////////
-
 #include <stdlib.h>
 #if !(_GLIBCXX_HAVE_COMPLEX_H)
 #include <complex.h>
@@ -36,11 +32,11 @@ double _Complex* zscal(size_t N, double _Complex ALPHA, double _Complex* X, int 
 // zdscal?
 
 // COPY -- copy vector
-int scopy(size_t N, float* X, int INCX, float* Y, int INCY);
-int dcopy(size_t N, double* X, int INCX, double* Y, int INCY);
+float* scopy(size_t N, float* X, int INCX, float* Y, int INCY);
+double* dcopy(size_t N, double* X, int INCX, double* Y, int INCY);
 #if !(_GLIBCXX_HAVE_COMPLEX_H)
-int ccopy(size_t N, float _Complex* X, int INCX, float _Complex* Y, int INCY);
-int zcopy(size_t N, double _Complex* X, int INCX, double _Complex* Y, int INCY);
+float _Complex* ccopy(size_t N, float _Complex* X, int INCX, float _Complex* Y, int INCY);
+double _Complex* zcopy(size_t N, double _Complex* X, int INCX, double _Complex* Y, int INCY);
 #endif
 
 // SWAP -- swap vectors
@@ -85,8 +81,8 @@ double _Complex dzasum(size_t N, double _Complex* X, int INCX);
 #endif
 
 // I_AMAX -- \infty-norm
-float isamax(size_t N, float _Complex* X, int INCX);
-double idamax(size_t N, float _Complex* X, int INCX);
+float isamax(size_t N, float* X, int INCX);
+double idamax(size_t N, double* X, int INCX);
 #if !(_GLIBCXX_HAVE_COMPLEX_H)
 float _Complex icamax(size_t N, float _Complex* X, int INCX);
 double _Complex izamax(size_t N, double _Complex* X, int INCX);

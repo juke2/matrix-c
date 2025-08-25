@@ -9,6 +9,7 @@ pkgs.mkShell {
   CFLAGS = "-Wall";
   LDFLAGS = "";
   LDLIBS = "-lm";
+  SRC_DIR = "./src/";
   BUILD_DIR = "./build/";
   BIN_DIR = "./bin/";
 }

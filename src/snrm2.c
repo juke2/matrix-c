@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include "matrix-c.h"
-int snrm2(size_t N, float* X, int INCX){
+float snrm2(size_t N, float* X, int INCX){
     // I think this is the correct implementation?
     // see https://en.wikipedia.org/wiki/Euclidean_space#Metric_structure 
     return sqrtf(sdot(N,X,INCX,X,INCX));

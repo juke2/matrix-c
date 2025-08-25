@@ -1,3 +1,4 @@
+#include <math.h>
 void srotg(float A, float B, float *C, float *S){
     float r = 0.0;
     r = hypotf(A,B);

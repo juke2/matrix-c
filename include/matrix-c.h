@@ -1,4 +1,4 @@
-
+// descriptions of functions taken from https://www.netlib.org/blas/
 
 #ifndef MATRIX_C_JUKE_H
 
@@ -109,16 +109,34 @@ void zdrot(size_t N, double _Complex* X, int INCX, double _Complex* Y, int INCY,
 #endif
 
 // ROTMG - generate modified plane rotation
-// srotmg
-// drotmg
+void srotmg(float D1, float D2, float A, float B, float* PARAM);
+void drotmg(double D1, double D2, double A, double B, double* PARAM);
 
 // ROTM - apply modified plane rotation
-// srotm
-// drotm
+void srotm(size_t N, float* X, int INCX, float* Y, int INCY, float* PARAM);
+void drotm(size_t N, double* X, int INCX, double* Y, int INCY, double* PARAM);
 
 
 // LEVEL TWO FUNCTIONS
 
+// MATRIX-VECTOR OPERATIONS
+
+// GEMV - general matrix-vector multiply
+// float* sgemv()
+// double* dgemv()
+#if !(_GLIBCXX_HAVE_COMPLEX_H)
+// float _Complex* cgemv()
+// double _Complex* zgemv()
+#endif
+
+// HEMV - Hermetian matrix-vector mul
+#if !(_GLIBCXX_HAVE_COMPLEX_H) 
+// float _Complex* chemv()
+// double _Complex* zhemv()
+#endif
+
+
+// BAND STORAGE
 
 
 // LEVEL THREE FUNCTIONS

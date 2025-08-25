@@ -455,9 +455,55 @@ void test_zdrot_implemented(){
     return;
 }
 
+void test_srotmg_implemented(){
+    errno = 0;
+    float* vec1 = (float*)(calloc(5,sizeof(float)));
+    srotmg(0.0,0.0,0.0,0.0,vec1);
+    print_test_result(errno != ENOSYS, "srotmg");
+    free(vec1);
+    return;
+}
+
+void test_drotmg_implemented(){
+    errno = 0;
+    double* param = (double*)(calloc(5,sizeof(double)));
+    drotmg(0.0,0.0,0.0,0.0,param);
+    print_test_result(errno != ENOSYS, "drotmg");
+    free(param);
+    return;
+}
+
+void test_srotm_implemented(){
+    errno = 0;
+    float* vec1 = (float*)(calloc(3, sizeof(float)));
+    float* vec2 = (float*)(calloc(3, sizeof(float)));
+    float* param = (float*)(calloc(5,sizeof(float)));
+    srotm(3, vec1, 1, vec2, 1, param);
+    print_test_result(errno != ENOSYS, "srotm");
+    free(vec1);
+    free(vec2);
+    free(param);
+    return;
+}
+
+void test_drotm_implemented(){
+    errno = 0;
+    double* vec1 = (double*)(calloc(3, sizeof(double)));
+    double* vec2 = (double*)(calloc(3, sizeof(double)));
+    double* param = (double*)(calloc(5,sizeof(double)));
+    drotm(3, vec1, 1, vec2, 1, param);
+    print_test_result(errno != ENOSYS, "drotm");
+    free(vec1);
+    free(vec2);
+    free(param);
+    return;
+}
+
+
+
 
 int main(int argc, char** argv){
-    printf("Running file: check_implemented.c");
+    printf("Running file: check_implemented.c\n");
 
     // axpy implementation tests
     test_saxpy_implemented();
@@ -523,6 +569,13 @@ int main(int argc, char** argv){
     test_csrot_implemented();
     test_zdrot_implemented();
 
+    // rotmg implementation tests
+    test_srotmg_implemented();
+    test_drotmg_implemented();
+
+    // rotm implementation tests
+    test_srotm_implemented();
+    test_drotm_implemented();
 
     printf("Number of functions implemented: %s(%d/%d)\e[0m\n", number_of_tests == tests_successful ? "\e[32m" : "\e[31m", tests_successful, number_of_tests);
 

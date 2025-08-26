@@ -691,13 +691,188 @@ void test_ztrsv_implemented(){
     return;
 }
 
+void test_sger_implemented(){
+    errno = 0;
+    float* mat1 = (float*)(calloc(9, sizeof(float)));
+    float* vec1 = (float*)(calloc(3, sizeof(float))); 
+    float* vec2 = (float*)(calloc(3, sizeof(float))); 
+    sger(3, 3, 1.0, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "sger");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_dger_implemented(){
+    errno = 0;
+    double* mat1 = (double*)(calloc(9, sizeof(double)));
+    double* vec1 = (double*)(calloc(3, sizeof(double))); 
+    double* vec2 = (double*)(calloc(3, sizeof(double))); 
+    dger(3, 3, 1.0, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "dger");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_cgeru_implemented(){
+    errno = 0;
+    float _Complex* mat1 = (float _Complex*)(calloc(9, sizeof(float _Complex)));
+    float _Complex* vec1 = (float _Complex*)(calloc(3, sizeof(float _Complex))); 
+    float _Complex* vec2 = (float _Complex*)(calloc(3, sizeof(float _Complex))); 
+    cgeru(3, 3, _Complex_I, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "cgeru");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_zgeru_implemented(){
+    errno = 0;
+    double _Complex* mat1 = (double _Complex*)(calloc(9, sizeof(double _Complex)));
+    double _Complex* vec1 = (double _Complex*)(calloc(3, sizeof(double _Complex))); 
+    double _Complex* vec2 = (double _Complex*)(calloc(3, sizeof(double _Complex))); 
+    zgeru(3, 3, (double _Complex)_Complex_I, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "zgeru");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
 
 
+void test_cgerc_implemented(){
+    errno = 0;
+    float _Complex* mat1 = (float _Complex*)(calloc(9, sizeof(float _Complex)));
+    float _Complex* vec1 = (float _Complex*)(calloc(3, sizeof(float _Complex))); 
+    float _Complex* vec2 = (float _Complex*)(calloc(3, sizeof(float _Complex))); 
+    cgerc(3, 3, _Complex_I, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "cgerc");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+
+void test_zgerc_implemented(){
+    errno = 0;
+    double _Complex* mat1 = (double _Complex*)(calloc(9, sizeof(double _Complex)));
+    double _Complex* vec1 = (double _Complex*)(calloc(3, sizeof(double _Complex))); 
+    double _Complex* vec2 = (double _Complex*)(calloc(3, sizeof(double _Complex))); 
+    zgerc(3, 3, (double _Complex)_Complex_I, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "zgerc");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_ssyr_implemented(){
+    errno = 0;
+    float* mat1 = (float*)(calloc(9, sizeof(float)));
+    float* vec1 = (float*)(calloc(3, sizeof(float))); 
+    ssyr('U', 3, 1.0, vec1, 1,  mat1, 3);
+    print_test_result(errno != ENOSYS, "ssyr");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_dsyr_implemented(){
+    errno = 0;
+    double* mat1 = (double*)(calloc(9, sizeof(double)));
+    double* vec1 = (double*)(calloc(3, sizeof(double))); 
+    dsyr('U', 3, 1.0, vec1, 1,  mat1, 3);
+    print_test_result(errno != ENOSYS, "dsyr");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_cher_implemented(){
+    errno = 0;
+    float _Complex* mat1 = (float _Complex*)(calloc(9, sizeof(float _Complex)));
+    float _Complex* vec1 = (float _Complex*)(calloc(3, sizeof(float _Complex))); 
+    cher('U', 3, 1.0, vec1, 1,  mat1, 3);
+    print_test_result(errno != ENOSYS, "cher");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_zher_implemented(){
+    errno = 0;
+    double _Complex* mat1 = (double _Complex*)(calloc(9, sizeof(double _Complex)));
+    double _Complex* vec1 = (double _Complex*)(calloc(3, sizeof(double _Complex))); 
+    zher('U', 3, 1.0, vec1, 1,  mat1, 3);
+    print_test_result(errno != ENOSYS, "zher");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_ssyr2_implemented(){
+    errno = 0;
+    float* mat1 = (float*)(calloc(9, sizeof(float)));
+    float* vec1 = (float*)(calloc(3, sizeof(float)));
+    float* vec2 = (float*)(calloc(3, sizeof(float)));  
+    ssyr2('U', 3, 1.0, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "ssyr2");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_dsyr2_implemented(){
+    errno = 0;
+    double* mat1 = (double*)(calloc(9, sizeof(double)));
+    double* vec1 = (double*)(calloc(3, sizeof(double)));
+    double* vec2 = (double*)(calloc(3, sizeof(double)));  
+    dsyr2('U', 3, 1.0, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "dsyr2");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_cher2_implemented(){
+    errno = 0;
+    float _Complex* mat1 = (float _Complex*)(calloc(9, sizeof(float _Complex)));
+    float _Complex* vec1 = (float _Complex*)(calloc(3, sizeof(float _Complex)));
+    float _Complex* vec2 = (float _Complex*)(calloc(3, sizeof(float _Complex)));  
+    cher2('U', 3, 1.0, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "cher2");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_zher2_implemented(){
+    errno = 0;
+    double _Complex* mat1 = (double _Complex*)(calloc(9, sizeof(double _Complex)));
+    double _Complex* vec1 = (double _Complex*)(calloc(3, sizeof(double _Complex)));
+    double _Complex* vec2 = (double _Complex*)(calloc(3, sizeof(double _Complex)));  
+    zher2('U', 3, 1.0, vec1, 1, vec2, 1, mat1, 3);
+    print_test_result(errno != ENOSYS, "zher2");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
 
 
 
 int main(int argc, char** argv){
     printf("Running file: check_implemented.c\n");
+
+    printf("\nLEVEL 1 FUNCTIONS:\n\n");
 
     // axpy implementation tests
     test_saxpy_implemented();
@@ -779,8 +954,52 @@ int main(int argc, char** argv){
     test_cgemv_implemented();
     test_zgemv_implemented();
 
+    // hemv implementation tests
+    test_chemv_implemented();
+    test_zhemv_implemented();
 
-    printf("Number of functions implemented: %s(%d/%d)\e[0m\n", number_of_tests == tests_successful ? "\e[32m" : "\e[31m", tests_successful, number_of_tests);
+    // ssymv implementation tests
+    test_ssymv_implemented();
+    test_dsymv_implemented();
+
+    // trmv implementation tests
+    test_strmv_implemented();
+    test_dtrmv_implemented();
+    test_ctrmv_implemented();
+    test_ztrmv_implemented();
+
+    // trsv implementation tests
+    test_strsv_implemented();
+    test_dtrsv_implemented();
+    test_ctrsv_implemented();
+    test_ztrmv_implemented();
+
+    // ger implementation tests
+    test_sger_implemented();
+    test_dger_implemented();
+    test_cgeru_implemented();
+    test_zgeru_implemented();
+    test_cgerc_implemented();
+    test_zgerc_implemented();
+
+    // syr implementation tests
+    test_ssyr_implemented();
+    test_dsyr_implemented();
+    
+    // her implementation tests
+    test_cher_implemented();
+    test_zher_implemented();
+
+    // syr2 implementation tests
+    test_ssyr2_implemented();
+    test_dsyr2_implemented();
+
+    // her2 implementation tests
+    test_cher2_implemented();
+    test_zher2_implemented();
+
+
+    printf("\nNumber of functions implemented: %s(%d/%d)\e[0m\n", number_of_tests == tests_successful ? "\e[32m" : "\e[31m", tests_successful, number_of_tests);
 
     return (number_of_tests == tests_successful) ? 0 : 1;
 }

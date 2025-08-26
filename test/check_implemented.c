@@ -499,6 +499,200 @@ void test_drotm_implemented(){
     return;
 }
 
+void test_sgemv_implemented(){
+    errno = 0;
+    float* mat1 = (float*)(calloc(9, sizeof(float)));
+    float* vec1 = (float*)(calloc(3, sizeof(float)));   
+    float* vec2 = (float*)(calloc(3, sizeof(float)));
+    sgemv('N', 3, 3, 1.0, mat1, 3, vec1, 1, 1.0, vec2, 1);
+    print_test_result(errno != ENOSYS, "sgemv");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_dgemv_implemented(){
+    errno = 0;
+    double* mat1 = (double*)(calloc(9, sizeof(double)));
+    double* vec1 = (double*)(calloc(3, sizeof(double)));   
+    double* vec2 = (double*)(calloc(3, sizeof(double)));
+    dgemv('N', 3, 3, 1.0, mat1, 3, vec1, 1, 1.0, vec2, 1);
+    print_test_result(errno != ENOSYS, "dgemv");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_cgemv_implemented(){
+    errno = 0;
+    float _Complex* mat1 = (float _Complex*)(calloc(9, sizeof(float _Complex)));
+    float _Complex* vec1 = (float _Complex*)(calloc(3, sizeof(float _Complex)));   
+    float _Complex* vec2 = (float _Complex*)(calloc(3, sizeof(float _Complex)));
+    cgemv('N', 3, 3, _Complex_I, mat1, 3, vec1, 1, _Complex_I, vec2, 1);
+    print_test_result(errno != ENOSYS, "cgemv");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_zgemv_implemented(){
+    errno = 0;
+    double _Complex* mat1 = (double _Complex*)(calloc(9, sizeof(double _Complex)));
+    double _Complex* vec1 = (double _Complex*)(calloc(3, sizeof(double _Complex)));   
+    double _Complex* vec2 = (double _Complex*)(calloc(3, sizeof(double _Complex)));
+    zgemv('N', 3, 3, (double _Complex)_Complex_I, mat1, 3, vec1, 1, (double _Complex)_Complex_I, vec2, 1);
+    print_test_result(errno != ENOSYS, "zgemv");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_chemv_implemented(){
+    errno = 0;
+    float _Complex* mat1 = (float _Complex*)(calloc(9, sizeof(float _Complex)));
+    float _Complex* vec1 = (float _Complex*)(calloc(3, sizeof(float _Complex)));   
+    float _Complex* vec2 = (float _Complex*)(calloc(3, sizeof(float _Complex)));
+    chemv('U', 3, _Complex_I, mat1, 3, vec1, 1, _Complex_I, vec2, 1);
+    print_test_result(errno != ENOSYS, "chemv");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_zhemv_implemented(){
+    errno = 0;
+    double _Complex* mat1 = (double _Complex*)(calloc(9, sizeof(double _Complex)));
+    double _Complex* vec1 = (double _Complex*)(calloc(3, sizeof(double _Complex)));   
+    double _Complex* vec2 = (double _Complex*)(calloc(3, sizeof(double _Complex)));
+    zhemv('U', 3, (double _Complex)_Complex_I, mat1, 3, vec1, 1, (double _Complex)_Complex_I, vec2, 1);
+    print_test_result(errno != ENOSYS, "zhemv");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_ssymv_implemented(){
+    errno = 0;
+    float* mat1 = (float*)(calloc(9, sizeof(float)));
+    float* vec1 = (float*)(calloc(3, sizeof(float)));   
+    float* vec2 = (float*)(calloc(3, sizeof(float)));
+    ssymv('U', 3, 1.0, mat1, 3, vec1, 1, 1.0, vec2, 1);
+    print_test_result(errno != ENOSYS, "ssymv");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_dsymv_implemented(){
+    errno = 0;
+    double* mat1 = (double*)(calloc(9, sizeof(double)));
+    double* vec1 = (double*)(calloc(3, sizeof(double)));   
+    double* vec2 = (double*)(calloc(3, sizeof(double)));
+    dsymv('U', 3, 1.0, mat1, 3, vec1, 1, 1.0, vec2, 1);
+    print_test_result(errno != ENOSYS, "dsymv");
+    free(mat1);
+    free(vec1);
+    free(vec2);
+    return;
+}
+
+void test_strmv_implemented(){
+    errno = 0;
+    float* mat1 = (float*)(calloc(9, sizeof(float)));
+    float* vec1 = (float*)(calloc(3, sizeof(float))); 
+    strmv('U', 'N', 'N', 3, mat1, 3, vec1, 1);
+    print_test_result(errno != ENOSYS, "strmv");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_dtrmv_implemented(){
+    errno = 0;
+    double* mat1 = (double*)(calloc(9, sizeof(double)));
+    double* vec1 = (double*)(calloc(3, sizeof(double))); 
+    dtrmv('U', 'N', 'N', 3, mat1, 3, vec1, 1);
+    print_test_result(errno != ENOSYS, "strmv");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_ctrmv_implemented(){
+    errno = 0;
+    float _Complex* mat1 = (float _Complex*)(calloc(9, sizeof(float _Complex)));
+    float _Complex* vec1 = (float _Complex*)(calloc(3, sizeof(float _Complex))); 
+    ctrmv('U', 'N', 'N', 3, mat1, 3, vec1, 1);
+    print_test_result(errno != ENOSYS, "ctrmv");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_ztrmv_implemented(){
+    errno = 0;
+    double _Complex* mat1 = (double _Complex*)(calloc(9, sizeof(double _Complex)));
+    double _Complex* vec1 = (double _Complex*)(calloc(3, sizeof(double _Complex))); 
+    ztrmv('U', 'N', 'N', 3, mat1, 3, vec1, 1);
+    print_test_result(errno != ENOSYS, "ztrmv");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_strsv_implemented(){
+    errno = 0;
+    float* mat1 = (float*)(calloc(9, sizeof(float)));
+    float* vec1 = (float*)(calloc(3, sizeof(float))); 
+    strsv('U', 'N', 'N', 3, mat1, 3, vec1, 1);
+    print_test_result(errno != ENOSYS, "strsv");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_dtrsv_implemented(){
+    errno = 0;
+    double* mat1 = (double*)(calloc(9, sizeof(double)));
+    double* vec1 = (double*)(calloc(3, sizeof(double))); 
+    dtrsv('U', 'N', 'N', 3, mat1, 3, vec1, 1);
+    print_test_result(errno != ENOSYS, "strsv");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_ctrsv_implemented(){
+    errno = 0;
+    float _Complex* mat1 = (float _Complex*)(calloc(9, sizeof(float _Complex)));
+    float _Complex* vec1 = (float _Complex*)(calloc(3, sizeof(float _Complex))); 
+    ctrsv('U', 'N', 'N', 3, mat1, 3, vec1, 1);
+    print_test_result(errno != ENOSYS, "ctrsv");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+void test_ztrsv_implemented(){
+    errno = 0;
+    double _Complex* mat1 = (double _Complex*)(calloc(9, sizeof(double _Complex)));
+    double _Complex* vec1 = (double _Complex*)(calloc(3, sizeof(double _Complex))); 
+    ztrsv('U', 'N', 'N', 3, mat1, 3, vec1, 1);
+    print_test_result(errno != ENOSYS, "ztrsv");
+    free(mat1);
+    free(vec1);
+    return;
+}
+
+
+
 
 
 
@@ -576,6 +770,15 @@ int main(int argc, char** argv){
     // rotm implementation tests
     test_srotm_implemented();
     test_drotm_implemented();
+
+    printf("\nLEVEL 2 FUNCTIONS:\n\n");
+
+    // gemv implementation tests
+    test_sgemv_implemented();
+    test_dgemv_implemented();
+    test_cgemv_implemented();
+    test_zgemv_implemented();
+
 
     printf("Number of functions implemented: %s(%d/%d)\e[0m\n", number_of_tests == tests_successful ? "\e[32m" : "\e[31m", tests_successful, number_of_tests);
 

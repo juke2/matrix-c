@@ -9,6 +9,7 @@
         "zaxpy": "cpp",
         "errno.h": "c",
         "stdlib.h": "c",
-        "random": "c"
+        "random": "c",
+        "complex.h": "c"
     }
 }

@@ -1,7 +1,7 @@
-float_objects = saxpy.o sscal.o scopy.o sswap.o sdot.o snrm2.o sasum.o isamax.o srotg.o srot.o srotmg.o srotm.o
-double_objects = daxpy.o dscal.o dcopy.o dswap.o ddot.o dnrm2.o dasum.o idamax.o drotg.o drot.o drotmg.o drotm.o
-complex_objects = caxpy.o cscal.o ccopy.o cswap.o cdotu.o cdotc.o scnrm2.o scasum.o icamax.o crotg.o crot.o csrot.o
-double_complex_objects = zaxpy.o zscal.o zcopy.o zswap.o zdotu.o zdotc.o dznrm2.o dzasum.o izamax.o zrotg.o zrot.o zdrot.o
+float_objects = saxpy.o sscal.o scopy.o sswap.o sdot.o snrm2.o sasum.o isamax.o srotg.o srot.o srotmg.o srotm.o sgemv.o ssymv.o strmv.o strsv.o sger.o ssyr.o ssyr2.o
+double_objects = daxpy.o dscal.o dcopy.o dswap.o ddot.o dnrm2.o dasum.o idamax.o drotg.o drot.o drotmg.o drotm.o dgemv.o dsymv.o dtrmv.o dtrsv.o dger.o dsyr.o dsyr2.o 
+complex_objects = caxpy.o cscal.o ccopy.o cswap.o cdotu.o cdotc.o scnrm2.o scasum.o icamax.o crotg.o crot.o csrot.o cgemv.o chemv.o ctrmv.o ctrsv.o cgeru.o cgerc.o cher.o cher2.o
+double_complex_objects = zaxpy.o zscal.o zcopy.o zswap.o zdotu.o zdotc.o dznrm2.o dzasum.o izamax.o zrotg.o zrot.o zdrot.o zgemv.o zhemv.o ztrmv.o ztrsv.o zgeru.o zgerc.o zher.o zher2.o
 other_objects = 
 objects = $(float_objects) $(double_objects) $(complex_objects) $(double_complex_objects) $(other_objects)
 
@@ -152,6 +152,96 @@ srotm.o:
 
 drotm.o:
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)drotm.o -c $(SRC_DIR)drotm.c
+
+sgemv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)sgemv.o -c $(SRC_DIR)sgemv.c
+
+dgemv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)dgemv.o -c $(SRC_DIR)dgemv.c
+
+cgemv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)cgemv.o -c $(SRC_DIR)cgemv.c
+
+zgemv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)zgemv.o -c $(SRC_DIR)zgemv.c
+
+chemv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)chemv.o -c $(SRC_DIR)chemv.c
+
+zhemv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)zhemv.o -c $(SRC_DIR)zhemv.c
+
+ssymv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)ssymv.o -c $(SRC_DIR)ssymv.c
+
+dsymv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)dsymv.o -c $(SRC_DIR)dsymv.c
+
+strmv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)strmv.o -c $(SRC_DIR)strmv.c
+
+dtrmv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)dtrmv.o -c $(SRC_DIR)dtrmv.c
+
+ctrmv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)ctrmv.o -c $(SRC_DIR)ctrmv.c
+
+ztrmv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)ztrmv.o -c $(SRC_DIR)ztrmv.c
+
+strsv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)strsv.o -c $(SRC_DIR)strsv.c
+
+dtrsv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)dtrsv.o -c $(SRC_DIR)dtrsv.c
+
+ctrsv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)ctrsv.o -c $(SRC_DIR)ctrsv.c
+
+ztrsv.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)ztrsv.o -c $(SRC_DIR)ztrsv.c
+
+sger.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)sger.o -c $(SRC_DIR)sger.c
+
+dger.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)dger.o -c $(SRC_DIR)dger.c
+
+cgeru.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)cgeru.o -c $(SRC_DIR)cgeru.c
+
+zgeru.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)zgeru.o -c $(SRC_DIR)zgeru.c
+
+cgerc.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)cgerc.o -c $(SRC_DIR)cgerc.c
+
+zgerc.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)zgerc.o -c $(SRC_DIR)zgerc.c
+
+ssyr.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)ssyr.o -c $(SRC_DIR)ssyr.c
+
+dsyr.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)dsyr.o -c $(SRC_DIR)dsyr.c
+
+cher.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)cher.o -c $(SRC_DIR)cher.c
+
+zher.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)zher.o -c $(SRC_DIR)zher.c
+
+ssyr2.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)ssyr2.o -c $(SRC_DIR)ssyr2.c
+
+dsyr2.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)dsyr2.o -c $(SRC_DIR)dsyr2.c
+
+cher2.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)cher2.o -c $(SRC_DIR)cher2.c
+
+zher2.o:
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $(BUILD_DIR)zher2.o -c $(SRC_DIR)zher2.c
 
 test: all
 	$(CC) $(CFLAGS) $(TEST_LD_FLAGS) $(TEST_LD_LIBS) $(LD_LIBS) -o $(BIN_DIR)check_implemented.out ./test/check_implemented.c

@@ -131,58 +131,69 @@ double _Complex* zgemv(char TRANS, size_t M, size_t N, double _Complex ALPHA, do
 
 // HEMV - Hermetian matrix-vector mul
 #if !(_GLIBCXX_HAVE_COMPLEX_H) 
-float _Complex* chemv(char uplo, size_t N, float _Complex ALPHA, float _Complex* A, size_t ldA, float _Complex* X, int INCX, float _Complex BETA, float _Complex* Y, int INCY);
-double _Complex* zhemv(char uplo, size_t N, double _Complex ALPHA, double _Complex* A, size_t ldA, double _Complex* X, int INCX, double _Complex BETA, double _Complex* Y, int INCY);
+float _Complex* chemv(char UPLO, size_t N, float _Complex ALPHA, float _Complex* A, size_t ldA, float _Complex* X, int INCX, float _Complex BETA, float _Complex* Y, int INCY);
+double _Complex* zhemv(char UPLO, size_t N, double _Complex ALPHA, double _Complex* A, size_t ldA, double _Complex* X, int INCX, double _Complex BETA, double _Complex* Y, int INCY);
 #endif
 
 // SYMV - Symmetric matrix-vector mul
-float* ssymv(char uplo, size_t N, float ALPHA, float* A, size_t ldA, float* X, int INCX, float BETA, float* Y, int INCY);
-double* dsymv(char uplo, size_t N, double ALPHA, double* A, size_t ldA, double* X, int INCX, double BETA, double* Y, int INCY);
+float* ssymv(char UPLO, size_t N, float ALPHA, float* A, size_t ldA, float* X, int INCX, float BETA, float* Y, int INCY);
+double* dsymv(char UPLO, size_t N, double ALPHA, double* A, size_t ldA, double* X, int INCX, double BETA, double* Y, int INCY);
 
 // TRMV - Triangular matrix-vector mul
-float* strmv(char uplo, char trans, char diag, size_t N, float* A, size_t ldA, float* X, int incx );
-double* dtrmv(char uplo, char trans, char diag, size_t N, double* A, size_t ldA, double* X, int incx );
-float _Complex* ctrmv(char uplo, char trans, char diag, size_t N, float _Complex* A, size_t ldA, float _Complex* X, int incx );
-double _Complex* ztrmv(char uplo, char trans, char diag, size_t N, double _Complex* A, size_t ldA, double _Complex* X, int incx );
+float* strmv(char UPLO, char TRANS, char DIAG, size_t N, float* A, size_t ldA, float* X, int INCX );
+double* dtrmv(char UPLO, char TRANS, char DIAG, size_t N, double* A, size_t ldA, double* X, int INCX );
+#if !(_GLIBCXX_HAVE_COMPLEX_H) 
+float _Complex* ctrmv(char UPLO, char TRANS, char DIAG, size_t N, float _Complex* A, size_t ldA, float _Complex* X, int INCX );
+double _Complex* ztrmv(char UPLO, char TRANS, char DIAG, size_t N, double _Complex* A, size_t ldA, double _Complex* X, int INCX );
+#endif
 
 // TRSV - Triangular solve
-float* strsv(char uplo, char trans, char diag, size_t N, float* A, size_t ldA, float* X, int incx );
-double* dtrsv(char uplo, char trans, char diag, size_t N, double* A, size_t ldA, double* X, int incx );
-float _Complex* ctrsv(char uplo, char trans, char diag, size_t N, float _Complex* A, size_t ldA, float _Complex* X, int incx );
-double _Complex* ztrsv(char uplo, char trans, char diag, size_t N, double _Complex* A, size_t ldA, double _Complex* X, int incx );
+float* strsv(char UPLO, char TRANS, char DIAG, size_t N, float* A, size_t ldA, float* X, int INCX );
+double* dtrsv(char UPLO, char TRANS, char DIAG, size_t N, double* A, size_t ldA, double* X, int INCX );
+#if !(_GLIBCXX_HAVE_COMPLEX_H) 
+float _Complex* ctrsv(char UPLO, char TRANS, char DIAG, size_t N, float _Complex* A, size_t ldA, float _Complex* X, int INCX );
+double _Complex* ztrsv(char UPLO, char TRANS, char DIAG, size_t N, double _Complex* A, size_t ldA, double _Complex* X, int INCX );
+#endif
 
 // GER - general rank-1 update 
 float* sger(size_t M, size_t N, float ALPHA, float* X, int INCX, float* Y, int INCY, float* A, size_t ldA);
 double* dger(size_t M, size_t N, double ALPHA, double* X, int INCX, double* Y, int INCY, double* A, size_t ldA);
 
 // GERU - general rank-1 update (complex)
+#if !(_GLIBCXX_HAVE_COMPLEX_H) 
 float _Complex* cgeru(size_t M, size_t N, float _Complex ALPHA, float _Complex* X, int INCX, float _Complex* Y, int INCY, float _Complex* A, size_t ldA);
 double _Complex* zgeru(size_t M, size_t N, double _Complex ALPHA, double _Complex* X, int INCX, double _Complex* Y, int INCY, double _Complex* A, size_t ldA);
+#endif
 
 // GERC - general rank-1 update (complex conj)
+#if !(_GLIBCXX_HAVE_COMPLEX_H) 
 float _Complex* cgerc(size_t M, size_t N, float _Complex ALPHA, float _Complex* X, int INCX, float _Complex* Y, int INCY, float _Complex* A, size_t ldA);
 double _Complex* zgerc(size_t M, size_t N, double _Complex ALPHA, double _Complex* X, int INCX, double _Complex* Y, int INCY, double _Complex* A, size_t ldA);
+#endif
 
 // SYR - symmetric rank-1 update
-// float* ssyr()
-// double* dsyr()
+float* ssyr(char UPLO, size_t N, float ALPHA, float* X, int INCX, float* A, size_t ldA); 
+double* dsyr(char UPLO, size_t N, double ALPHA, double* X, int INCX, double* A, size_t ldA);
 
 // HER - Hermitian rank-1 update
-// float* cher()
-// double* zher()
+#if !(_GLIBCXX_HAVE_COMPLEX_H) 
+float _Complex* cher(char UPLO, size_t N, float _Complex ALPHA, float _Complex* X, int INCX, float _Complex* A, size_t ldA);
+double _Complex* zher(char UPLO, size_t N, double _Complex ALPHA, double _Complex* X, int INCX, double _Complex* A, size_t ldA);
+#endif
 
 // SYR2 - symmetric rank-2 update
-// float* ssyr2()
-// double* dsyr2()
+float* ssyr2(char UPLO, size_t N, float ALPHA, float* X, int INCX, float* Y, int INCY, float* A, size_t ldA);
+double* dsyr2(char UPLO, size_t N, double ALPHA, double* X, int INCX, double* Y, int INCY, double* A, size_t ldA);
 
 // HER2- Hermitian rank-2 update 
-// float _Complex* cher2()
-// double _Complex* zher2()
-
-
+#if !(_GLIBCXX_HAVE_COMPLEX_H) 
+float _Complex* cher2(char UPLO, size_t N, float _Complex ALPHA, float _Complex* X, int INCX, float _Complex* Y, int INCY, float _Complex* A, size_t ldA);
+double _Complex* zher2(char UPLO, size_t N, double _Complex ALPHA, double _Complex* X, int INCX, double _Complex* Y, int INCY, double _Complex* A, size_t ldA);
+#endif
 
 
 // BAND STORAGE
+
 
 
 // LEVEL THREE FUNCTIONS

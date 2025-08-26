@@ -68,16 +68,16 @@ double _Complex zdotc(size_t N, double _Complex* X, int INCX, double _Complex* Y
 float snrm2(size_t N, float* X, int INCX);
 double dnrm2(size_t N, double* X, int INCX);
 #if !(_GLIBCXX_HAVE_COMPLEX_H)
-float _Complex scnrm2(size_t N, float _Complex* X, int INCX);
-double _Complex dznrm2(size_t N, double _Complex* X, int INCX);
+float scnrm2(size_t N, float _Complex* X, int INCX);
+double dznrm2(size_t N, double _Complex* X, int INCX);
 #endif
 
 // ASUM -- 1-norm
 float sasum(size_t N, float* X, int INCX);
 double dasum(size_t N, double* X, int INCX);
 #if !(_GLIBCXX_HAVE_COMPLEX_H)
-float _Complex scasum(size_t N, float _Complex* X, int INCX);
-double _Complex dzasum(size_t N, double _Complex* X, int INCX);
+float scasum(size_t N, float _Complex* X, int INCX);
+double dzasum(size_t N, double _Complex* X, int INCX);
 #endif
 
 // I_AMAX -- \infty-norm

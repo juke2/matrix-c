@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <errno.h>
+#include "matrix-c.h"
 double dnrm2(size_t N, double* X, int INCX){
-    errno = ENOSYS;
-    return 0.0;
+    return sqrtf(ddot(N,X,INCX,X,INCX));
 }

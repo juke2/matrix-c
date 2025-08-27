@@ -4,7 +4,7 @@ float* sgemv(char TRANS, size_t M, size_t N, float ALPHA, float* A, size_t ldA, 
     size_t i = 0, j = 0, d = 0, iy = 0, ix = 0, mem_loc = 0, loc_m = 0, loc_n = 0, lenx = 0, leny = 0;
 
     if(TRANS != 'N' && TRANS != 'T' && TRANS != 'C'){
-        return NULL;
+        TRANS = 'N';
     }
 
     if(TRANS == 'N'){

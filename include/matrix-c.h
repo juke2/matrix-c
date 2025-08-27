@@ -1,8 +1,8 @@
 // descriptions of functions taken from https://www.netlib.org/blas/
 
-#ifndef MATRIX_C_JUKE_H
+#ifndef MATRIX_C_H
 
-#define MATRIX_C_JUKE_H
+#define MATRIX_C_H
 
 #include <stdlib.h>
 #if !(_GLIBCXX_HAVE_COMPLEX_H)
@@ -103,9 +103,9 @@ void drot(size_t N, double* X, int INCX, double* Y, int INCY, double C, double  
 void crot(size_t N, float _Complex* X, int INCX, float _Complex* Y, int INCY, float C, float _Complex S);
 void zrot(size_t N, double _Complex* X, int INCX, double _Complex* Y, int INCY, double C, double _Complex S);
 
-// (c complex, s complex)
-void csrot(size_t N, float _Complex* X, int INCX, float _Complex* Y, int INCY, float _Complex C, float _Complex S);
-void zdrot(size_t N, double _Complex* X, int INCX, double _Complex* Y, int INCY, double _Complex C, double _Complex S);
+// (c real, s real)
+void csrot(size_t N, float _Complex* X, int INCX, float _Complex* Y, int INCY, float C, float S);
+void zdrot(size_t N, double _Complex* X, int INCX, double _Complex* Y, int INCY, double C, double S);
 #endif
 
 // ROTMG - generate modified plane rotation

@@ -437,7 +437,7 @@ void test_csrot_implemented(){
     errno = 0;
     float _Complex* vec1 = (float _Complex*)(calloc(3, sizeof(float _Complex)));
     float _Complex* vec2 = (float _Complex*)(calloc(3, sizeof(float _Complex)));
-    csrot(3, vec1, 1, vec2, 1, _Complex_I, _Complex_I);
+    csrot(3, vec1, 1, vec2, 1, 1, 1);
     print_test_result(errno != ENOSYS, "csrot");
     free(vec1);
     free(vec2);
@@ -448,7 +448,7 @@ void test_zdrot_implemented(){
     errno = 0;
     double _Complex* vec1 = (double _Complex*)(calloc(3, sizeof(double _Complex)));
     double _Complex* vec2 = (double _Complex*)(calloc(3, sizeof(double _Complex)));
-    zdrot(3, vec1, 1, vec2, 1, (double _Complex)_Complex_I, (double _Complex)_Complex_I);
+    zdrot(3, vec1, 1, vec2, 1, 1, 1);
     print_test_result(errno != ENOSYS, "zdrot");
     free(vec1);
     free(vec2);

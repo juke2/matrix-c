@@ -34,14 +34,18 @@ float* sgemv(char TRANS, size_t M, size_t N, float ALPHA, float* A, size_t ldA, 
     }
 
     // multiply mat A and vec X.
-
+    ix = 0;
+    iy = 0;
     // normal mult
     if(TRANS == 'N'){
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = i * ldA + j;
-                Y[i] += A[mem_loc] * X[i];
+                Y[iy] += A[mem_loc] * X[ix];
+                
             }
+            ix += INCX;
+            iy += INCY;
         }
     }
 
@@ -50,8 +54,10 @@ float* sgemv(char TRANS, size_t M, size_t N, float ALPHA, float* A, size_t ldA, 
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = j * ldA + i;
-                Y[i] += A[mem_loc] * X[i];
+                Y[iy] += A[mem_loc] * X[ix];
             }
+            ix += INCX;
+            iy += INCY;
         }
     }
 

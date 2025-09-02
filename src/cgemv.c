@@ -35,14 +35,18 @@ size_t i = 0, j = 0, d = 0, iy = 0, ix = 0, mem_loc = 0, loc_m = 0, loc_n = 0, l
     }
 
     // multiply mat A and vec X.
-
+    ix = 0;
+    iy = 0;
     // normal mult
     if(TRANS == 'N'){
+
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = i * ldA + j;
-                Y[i] += A[mem_loc] * X[i];
+                Y[iy] += A[mem_loc] * X[ix];
             }
+            ix += INCX;
+            iy += INCY;
         }
     }
 
@@ -51,8 +55,10 @@ size_t i = 0, j = 0, d = 0, iy = 0, ix = 0, mem_loc = 0, loc_m = 0, loc_n = 0, l
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = j * ldA + i;
-                Y[i] += A[mem_loc] * X[i];
+                Y[iy] += A[mem_loc] * X[ix];
             }
+            ix += INCX;
+            iy += INCY;
         }
     }
 
@@ -60,8 +66,10 @@ size_t i = 0, j = 0, d = 0, iy = 0, ix = 0, mem_loc = 0, loc_m = 0, loc_n = 0, l
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = j * ldA + i;
-                Y[i] += conjf(A[mem_loc] * X[i]);
+                Y[iy] += conjf(A[mem_loc] * X[ix]);
             }
+            ix += INCX;
+            iy += INCY;
         }
     }
 

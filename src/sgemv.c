@@ -20,6 +20,7 @@ float* sgemv(char TRANS, size_t M, size_t N, float ALPHA, float* A, size_t ldA, 
         lenx = M;
     }
     
+    float* X_LOC = (float*)malloc(sizeof(float) * lenx);
 
     // scale Y according to BETA
     for(d = 0; d < leny; d++){
@@ -29,7 +30,7 @@ float* sgemv(char TRANS, size_t M, size_t N, float ALPHA, float* A, size_t ldA, 
 
     // scale X according to ALPHA
     for(d = 0; d < lenx; d++){
-        X[ix] = X[ix] * ALPHA;
+        X_LOC[ix] = X[ix] * ALPHA;
         ix += INCX;
     }
 
@@ -41,7 +42,7 @@ float* sgemv(char TRANS, size_t M, size_t N, float ALPHA, float* A, size_t ldA, 
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = i * ldA + j;
-                Y[iy] += A[mem_loc] * X[ix];
+                Y[iy] += A[mem_loc] * X_LOC[ix];
                 
             }
             ix += INCX;
@@ -54,12 +55,14 @@ float* sgemv(char TRANS, size_t M, size_t N, float ALPHA, float* A, size_t ldA, 
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = j * ldA + i;
-                Y[iy] += A[mem_loc] * X[ix];
+                Y[iy] += A[mem_loc] * X_LOC[ix];
             }
             ix += INCX;
             iy += INCY;
         }
     }
+
+    free(X_LOC);
 
     return Y;
 

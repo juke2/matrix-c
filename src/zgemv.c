@@ -20,7 +20,8 @@ size_t i = 0, j = 0, d = 0, iy = 0, ix = 0, mem_loc = 0, loc_m = 0, loc_n = 0, l
         leny = N;
         lenx = M;
     }
-    
+
+    double _Complex* X_LOC = (double _Complex*)malloc(sizeof(double _Complex) * lenx);
 
     // scale Y according to BETA
     for(d = 0; d < leny; d++){
@@ -30,7 +31,7 @@ size_t i = 0, j = 0, d = 0, iy = 0, ix = 0, mem_loc = 0, loc_m = 0, loc_n = 0, l
 
     // scale X according to ALPHA
     for(d = 0; d < lenx; d++){
-        X[ix] = X[ix] * ALPHA;
+        X_LOC[ix] = X[ix] * ALPHA;
         ix += INCX;
     }
 
@@ -42,7 +43,7 @@ size_t i = 0, j = 0, d = 0, iy = 0, ix = 0, mem_loc = 0, loc_m = 0, loc_n = 0, l
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = i * ldA + j;
-                Y[iy] += A[mem_loc] * X[ix];
+                Y[iy] += A[mem_loc] * X_LOC[ix];
             }
             ix += INCX;
             iy += INCY;
@@ -54,7 +55,7 @@ size_t i = 0, j = 0, d = 0, iy = 0, ix = 0, mem_loc = 0, loc_m = 0, loc_n = 0, l
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = j * ldA + i;
-                Y[iy] += A[mem_loc] * X[ix];
+                Y[iy] += A[mem_loc] * X_LOC[ix];
             }
             ix += INCX;
             iy += INCY;
@@ -66,12 +67,13 @@ size_t i = 0, j = 0, d = 0, iy = 0, ix = 0, mem_loc = 0, loc_m = 0, loc_n = 0, l
         for(i = 0; i < loc_m; i++){
             for(j = 0; j < loc_n; j++){
                 mem_loc = j * ldA + i;
-                Y[iy] += conj(A[mem_loc] * X[ix]);
+                Y[iy] += conj(A[mem_loc] * X_LOC[ix]);
             }
             ix += INCX;
             iy += INCY;
         }
     }
+    free(X_LOC);
 
     return Y;
 }
